@@ -7,5 +7,13 @@ export default function Home() {
     testFunc('username');
   }, []);
 
-  return <TrendingList />;
+  const containerStyles = {
+    display: 'flex',
+  };
+
+  return (
+    <div style={containerStyles}>
+      <TrendingList />
+    </div>
+  );
 }
