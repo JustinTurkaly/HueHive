@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import Image from 'next/image';
-import TrendingList from './components/TrendingList';
-import Mission from './components/Mission';
-import MenuBar from './components/MenuBar';
+import TrendingList from '../components/homepage/TrendingList';
+import Mission from '../components/homepage/Mission';
+import MenuBar from '../components/MenuBar';
 import { testFunc } from './controllers/testFunc';
 import styles from '../styles/styles.module.css';
 

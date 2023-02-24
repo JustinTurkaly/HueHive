@@ -3,6 +3,7 @@ import React from 'react';
 import Button from '@mui/material/Button';
 import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import ColorLensIcon from '@mui/icons-material/ColorLens';
+import Link from 'next/link';
 import styles from '../../styles/styles.module.css';
 
 const Mission = () => {
@@ -17,17 +18,19 @@ const Mission = () => {
           brilliant color schemes.
         </p>
         <div className={styles.missionButtonContainer}>
-          <Button
-            variant="contained"
-            endIcon={<AutoFixHighIcon />}
-            sx={{ width: 1 / 2, height: 60, ml: 15, mt: 3 }}
-          >
-            Start the magic!
-          </Button>
+          <Link href="/generator/industry" style={{ textDecoration: 'none' }}>
+            <Button
+              variant="contained"
+              endIcon={<AutoFixHighIcon sx={{ ml: 2 }} />}
+              sx={{ width: 1 / 2, height: 60, ml: 15, mt: 3 }}
+            >
+              Start the magic!
+            </Button>
+          </Link>
           <Button
             variant="outlined"
             color="secondary"
-            endIcon={<ColorLensIcon />}
+            endIcon={<ColorLensIcon sx={{ ml: 1 }} />}
             sx={{ width: 1 / 2, height: 60, ml: 15, mt: 3 }}
           >
             Build custom pallete
