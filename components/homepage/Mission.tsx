@@ -18,7 +18,7 @@ const Mission = () => {
           brilliant color schemes.
         </p>
         <div className={styles.missionButtonContainer}>
-          <Link href="/generator/industry" style={{ textDecoration: 'none' }}>
+          <Link href="/generator/form" style={{ textDecoration: 'none' }}>
             <Button
               variant="contained"
               endIcon={<AutoFixHighIcon sx={{ ml: 2 }} />}

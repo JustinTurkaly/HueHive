@@ -5,12 +5,13 @@ import Head from 'next/head';
 import '../styles/globals.css';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material';
+import { AppContextProvider } from '../components/AppContext';
 
 const MyApp = ({ Component }: AppProps) => {
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#F5C637',
+        main: '#a370f0',
       },
       secondary: {
         main: '#000000',
@@ -24,11 +25,13 @@ const MyApp = ({ Component }: AppProps) => {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap"
           rel="stylesheet"
         />
       </Head>
-      <Component />
+      <AppContextProvider>
+        <Component />
+      </AppContextProvider>
     </ThemeProvider>
   );
 };
