@@ -1,0 +1,114 @@
+.buttonContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex: 1;
+  width: 60%;
+}
+
+.paperColorCell {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  border-radius: 4px;
+  width: 42px;
+  height: 42px;
+  margin-left: 12px;
+}
+
+.paperTrendingListCell {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  width: 58vh;
+  height: 10vh;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #a5a5a5;
+}
+
+.colorContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 40%;
+  justify-content: space-evenly;
+}
+
+.trendingListTitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  position: fixed;
+  top: 12vh;
+  font-size: 30px;
+}
+
+.trendingListContainer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.missionContainer {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 25px;
+  height: 88vh;
+  width: 40vw;
+  background-color: white;
+  margin-top: 6vh;
+  margin-bottom: 6vh;
+  margin-left: 6vw;
+  display: flex;
+  justify-content: center;
+}
+
+.homeScreenContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.missionHeader {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  text-align: center;
+  font-size: 65px;
+  margin-top: 15%;
+  margin-bottom: 50px;
+}
+
+.missionHeaderContainer {
+  max-width: 500px;
+}
+
+.paragraph {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 1.4em;
+  text-align: center;
+}
+
+.missionButtonContainer {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15%;
+}
+
+.paperListContainer {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2),
+    0px 5px 8px 0px rgba(0, 0, 0, 0.14), 0px 1px 14px 0px rgba(0, 0, 0, 0.12);
+  border-radius: 4px;
+  background-color: white;
+  height: 88vh;
+  width: 40vw;
+  border-radius: 25px;
+  overflow-y: auto;
+  margin-top: 6vh;
+  margin-bottom: 6vh;
+  margin-right: 3vw;
+}
+
+.paperListContainer::-webkit-scrollbar {
+  display: none;
+}
