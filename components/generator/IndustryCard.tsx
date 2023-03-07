@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useContext } from 'react';
 import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { AppContext } from '../AppContext';
 import styles from '../../styles/generator.module.css';
 
 const top100Films = [
@@ -135,6 +136,16 @@ const top100Films = [
 ];
 
 const IndustryCard = () => {
+  const { global, setGlobalState } = useContext(AppContext);
+  const handleAutocompleteChange = (event: any, values: string[]) => {
+    setGlobalState({
+      ...global,
+      generator: {
+        ...global.generator,
+        industry: values,
+      },
+    });
+  };
   return (
     <div className={styles.industryContainerInner}>
       <h1 className={styles.industryHeader}>Your industry</h1>
@@ -147,6 +158,8 @@ const IndustryCard = () => {
         options={top100Films.map((option) => option.title)}
         defaultValue={[top100Films[13].title]}
         freeSolo
+        value={global.generator.industry}
+        onChange={handleAutocompleteChange}
         renderTags={(value: readonly string[], getTagProps) =>
           value.map((option: string, index: number) => (
             <Chip

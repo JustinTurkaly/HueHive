@@ -6,6 +6,7 @@ import BackButton from '../BackButton';
 import IndustryCard from './IndustryCard';
 import AdjectivesCard from './AdjectivesCard';
 import InspirationCard from './InspirationCard';
+import ColorInspirationCard from './ColorInspirationCard';
 
 type CardProps = {
   global: {
@@ -19,9 +20,19 @@ const Card: React.FC<CardProps> = ({ global }) => {
       0: <IndustryCard />,
       1: <AdjectivesCard />,
       2: <InspirationCard />,
-      3: <p>4</p>,
+      3: <ColorInspirationCard />,
     };
     return screenDeciderObj[global.pageCounter];
+  };
+  const nextButtonDecider = () => {
+    if (global.pageCounter === 3) {
+      return (
+        <Link href="/results" style={{ textDecoration: 'none' }}>
+          <NextButton />
+        </Link>
+      );
+    }
+    return <NextButton />;
   };
   return (
     <div className={styles.industryPaper}>
@@ -34,7 +45,7 @@ const Card: React.FC<CardProps> = ({ global }) => {
             <BackButton />
           </Link>
         )}
-        <NextButton />
+        {nextButtonDecider()}
       </div>
     </div>
   );

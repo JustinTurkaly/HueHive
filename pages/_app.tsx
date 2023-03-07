@@ -28,6 +28,11 @@ const MyApp = ({ Component }: AppProps) => {
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;900&display=swap"
           rel="stylesheet"
         />
+        <link
+          href="//db.onlinewebfonts.com/c/a52d31ec45dff4f55779eddaada28b32?family=BrandonGrotesqueWeb-Black"
+          rel="stylesheet"
+          type="text/css"
+        />
       </Head>
       <AppContextProvider>
         <Component />
