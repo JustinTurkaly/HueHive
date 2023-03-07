@@ -7,8 +7,10 @@ const NextButton = () => {
 
   const handlePageIncrease = () => {
     const copy = { ...global };
-    copy.pageCounter += 1;
-    setGlobalState(copy);
+    if (global.pageCounter !== 3) {
+      copy.pageCounter += 1;
+      setGlobalState(copy);
+    }
   };
 
   return (
@@ -17,7 +19,7 @@ const NextButton = () => {
       onClick={handlePageIncrease}
       className={styles.cssbuttonsIoButton}
     >
-      Next
+      {global.pageCounter === 2 ? 'Skip' : 'Next'}
       <div className={styles.icon}>
         <svg
           height="24"

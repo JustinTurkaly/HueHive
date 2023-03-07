@@ -19,7 +19,16 @@ type AppContextProviderProps = {
 export const AppContextProvider: React.FC<AppContextProviderProps> = ({
   children,
 }) => {
-  const [global, setGlobalState] = useState<any>({ pageCounter: 0 });
+  const [global, setGlobalState] = useState<any>({
+    pageCounter: 0,
+    generator: {
+      industry: [],
+      adjectives: [],
+      companies: [],
+      colors: [],
+    },
+    gptPallete: {},
+  });
 
   return (
     <AppContext.Provider value={{ global, setGlobalState }}>

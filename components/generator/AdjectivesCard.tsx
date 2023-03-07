@@ -1,9 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useContext } from 'react';
 import Chip from '@mui/material/Chip';
 import Autocomplete from '@mui/material/Autocomplete';
 import TextField from '@mui/material/TextField';
+import { AppContext } from '../AppContext';
 import styles from '../../styles/generator.module.css';
 
 const testList: Array<string> = [
@@ -15,6 +16,16 @@ const testList: Array<string> = [
 ];
 
 const AdjectivesCard = () => {
+  const { global, setGlobalState } = useContext(AppContext);
+  const handleAutocompleteChange = (event: any, values: string[]) => {
+    setGlobalState({
+      ...global,
+      generator: {
+        ...global.generator,
+        adjectives: values,
+      },
+    });
+  };
   return (
     <div className={styles.industryContainerInner}>
       <h1 className={styles.industryHeader}>Descibe your website</h1>
@@ -26,6 +37,8 @@ const AdjectivesCard = () => {
         id="tags-filled"
         options={testList.map((option) => option)}
         freeSolo
+        value={global.generator.adjectives}
+        onChange={handleAutocompleteChange}
         renderTags={(value: readonly string[], getTagProps) =>
           value.map((option: string, index: number) => (
             <Chip
