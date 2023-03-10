@@ -2,10 +2,12 @@
 import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
-import '../styles/globals.css';
+// import '../styles/globals.css';
+import '../styles1/globals.scss';
+import '@fortawesome/fontawesome-svg-core/styles.css';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material';
-import { AppContextProvider } from '../components/AppContext';
+import { AppContextProvider } from '../../components/AppContext';
 
 const MyApp = ({ Component }: AppProps) => {
   const theme = createTheme({

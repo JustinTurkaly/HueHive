@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import Link from 'next/link';
 import Button from '@mui/material/Button';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import PreviewIcon from '@mui/icons-material/Preview';
@@ -20,35 +21,35 @@ const ResultsComponent = () => {
     '#3C7F97': 'Tropical Blue',
   };
 
-  const grabData = async () => {
-    try {
-      const response = await fetch('/api/generate', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ promptObj: global.generator }),
-      });
+  // const grabData = async () => {
+  //   try {
+  //     const response = await fetch('/api/generate', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify({ promptObj: global.generator }),
+  //     });
 
-      const data = await response.json();
-      if (response.status !== 200) {
-        throw (
-          data.error ||
-          new Error(`Request failed with status ${response.status}`)
-        );
-      }
+  //     const data = await response.json();
+  //     if (response.status !== 200) {
+  //       throw (
+  //         data.error ||
+  //         new Error(`Request failed with status ${response.status}`)
+  //       );
+  //     }
 
-      setGlobalState({
-        ...global,
-        gptPallete: {
-          ...JSON.parse(data.result),
-        },
-      });
-    } catch (error) {
-      // Consider implementing your own error handling logic here
-      console.error(error);
-    }
-  };
+  //     setGlobalState({
+  //       ...global,
+  //       gptPallete: {
+  //         ...JSON.parse(data.result),
+  //       },
+  //     });
+  //   } catch (error) {
+  //     // Consider implementing your own error handling logic here
+  //     console.error(error);
+  //   }
+  // };
 
   useEffect(() => {
     // grabData();
@@ -78,14 +79,16 @@ const ResultsComponent = () => {
             >
               Save pallette
             </Button>
-            <Button
-              variant="contained"
-              color="primary"
-              sx={{ width: 1 / 4, height: 50 }}
-              endIcon={<PreviewIcon sx={{ ml: 2, width: 30, height: 30 }} />}
-            >
-              Preview pallette
-            </Button>
+            <Link href="/dashboard" style={{ textDecoration: 'none' }}>
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ width: 1 / 4, height: 50 }}
+                endIcon={<PreviewIcon sx={{ ml: 2, width: 30, height: 30 }} />}
+              >
+                Preview pallette
+              </Button>
+            </Link>
             <Button
               variant="contained"
               color="primary"
