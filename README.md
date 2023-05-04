@@ -1,4 +1,4 @@
-## 🌈🐝 HueHive: Transform your design ideas with AI-generated color schemes 🐝🌈
+## 🌈🐝 HueHive: Transform your design ideas with AI 🐝🌈
 
 ### 🎉 HueHive was submitted to the 2023 Supabase AI hackathon! 🎉
 
