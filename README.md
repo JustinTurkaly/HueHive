@@ -1,4 +1,4 @@
-## 🌈🐝 HueHive: Transform your design ideas with AI 🐝🌈
+## 🌈🐝 HueHive: Transform your design ideas with the power of AI 🐝🌈
 
 ### 🎉 HueHive was submitted to the 2023 Supabase AI hackathon! 🎉
 
