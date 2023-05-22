@@ -1,13 +1,14 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable import/no-extraneous-dependencies */
+import React, { useContext } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Link from 'next/link';
-import Breadcrumb from '@layout/AdminLayout/Breadcrumb/Breadcrumb';
 import HeaderFeaturedNav from '@layout/AdminLayout/Header/HeaderFeaturedNav';
 import HeaderNotificationNav from '@layout/AdminLayout/Header/HeaderNotificationNav';
 import HeaderProfileNav from '@layout/AdminLayout/Header/HeaderProfileNav';
 import { Button, Container } from 'react-bootstrap';
+import { AppContext } from '../../../../components/AppContext';
 
 type HeaderProps = {
   toggleSidebar: () => void;
@@ -16,9 +17,17 @@ type HeaderProps = {
 
 export default function Header(props: HeaderProps) {
   const { toggleSidebar, toggleSidebarMd } = props;
+  const { global } = useContext(AppContext);
 
   return (
-    <header className="header sticky-top mb-4 p-2 border-bottom">
+    <header
+      className="header sticky-top p-2 border-bottom border border-secondary"
+      style={
+        global.customPaletteBool
+          ? { backgroundColor: global.customPalette.mainColor[0] }
+          : { backgroundColor: global.gptPallete[2][0] }
+      }
+    >
       <Container fluid className="header-navbar d-flex align-items-center">
         <Button
           variant="link"
@@ -34,13 +43,17 @@ export default function Header(props: HeaderProps) {
           type="button"
           onClick={toggleSidebarMd}
         >
-          <FontAwesomeIcon icon={faBars} />
+          <FontAwesomeIcon
+            icon={faBars}
+            style={
+              global.customPaletteBool
+                ? { color: global.customPalette.lAccent[0] }
+                : { color: global.gptPallete[1][0] }
+            }
+          />
         </Button>
         <Link href="/" className="header-brand d-md-none">
-          <svg width="118" height="46">
-            <title>CoreUI Logo</title>
-            <use xlinkHref="/assets/brand/coreui.svg#full" />
-          </svg>
+          <h1>Your Logo</h1>
         </Link>
         <div className="header-nav d-none d-md-flex">
           <HeaderFeaturedNav />
@@ -51,10 +64,6 @@ export default function Header(props: HeaderProps) {
         <div className="header-nav ms-2">
           <HeaderProfileNav />
         </div>
-      </Container>
-      <div className="header-divider border-top my-2 ms-n2 me-n2" />
-      <Container fluid>
-        <Breadcrumb />
       </Container>
     </header>
   );

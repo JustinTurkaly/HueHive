@@ -4,6 +4,7 @@ import React, {
   useCallback,
   useEffect,
   useState,
+  useContext,
 } from 'react';
 import { useResizeDetector } from 'react-resize-detector';
 import Head from 'next/head';
@@ -11,8 +12,10 @@ import Sidebar, { SidebarOverlay } from '@layout/AdminLayout/Sidebar/Sidebar';
 import Header from '@layout/AdminLayout/Header/Header';
 import Footer from '@layout/AdminLayout/Footer/Footer';
 import { Container } from 'react-bootstrap';
+import { AppContext } from '../../../components/AppContext';
 
 export default function AdminLayout({ children }: PropsWithChildren) {
+  const { global } = useContext(AppContext);
   // Show status for xs screen
   const [isShowSidebar, setIsShowSidebar] = useState(false);
 
@@ -64,7 +67,14 @@ export default function AdminLayout({ children }: PropsWithChildren) {
           toggleSidebar={toggleIsShowSidebar}
           toggleSidebarMd={toggleIsShowSidebarMd}
         />
-        <div className="body flex-grow-1 px-3">
+        <div
+          className="body flex-grow-1 px-3"
+          style={
+            global.customPaletteBool
+              ? { background: global.customPalette.dAccent[0] }
+              : { background: global.gptPallete[3][0] }
+          }
+        >
           <Container fluid="lg">{children}</Container>
         </div>
         <Footer />

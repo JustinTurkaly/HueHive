@@ -1,2 +1,2 @@
 next.config.js
-./pages/api/generate.ts
+.ts

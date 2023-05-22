@@ -27,7 +27,7 @@ const Mission = () => {
               Start the magic!
             </Button>
           </Link>
-          <Link href="/dashboard" style={{ textDecoration: 'none' }}>
+          <Link href="/build" style={{ textDecoration: 'none' }}>
             <Button
               variant="outlined"
               color="secondary"

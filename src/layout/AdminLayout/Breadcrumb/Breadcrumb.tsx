@@ -1,4 +1,6 @@
-import { Breadcrumb as BSBreadcrumb } from 'react-bootstrap'
+/* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable import/no-extraneous-dependencies */
+import { Breadcrumb as BSBreadcrumb } from 'react-bootstrap';
 
 export default function Breadcrumb() {
   return (
@@ -17,5 +19,5 @@ export default function Breadcrumb() {
       </BSBreadcrumb.Item>
       <BSBreadcrumb.Item active>Data</BSBreadcrumb.Item>
     </BSBreadcrumb>
-  )
+  );
 }

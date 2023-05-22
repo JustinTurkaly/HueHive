@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from 'react';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 import Button from '@mui/material/Button';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import PreviewIcon from '@mui/icons-material/Preview';
@@ -12,52 +12,53 @@ import ColorList from './ColorList';
 
 const ResultsComponent = () => {
   const { global, setGlobalState } = useContext(AppContext);
+  const router = useRouter();
 
-  const testResponse = {
-    '#B7D8f1': 'Light Blue',
-    '#3D5A80': 'Midnight Blue',
-    '#2F2F2F': 'Charcoal Gray',
-    '#F7F7F7': 'Crisp White',
-    '#3C7F97': 'Tropical Blue',
+  const testResponse = [
+    ['#F5F5F5', 'Pearl White'],
+    ['#FFD700', 'Golden'],
+    ['#00BFFF', 'Skyfall'],
+    ['#FF4500', 'Orangutan'],
+    ['#2F4F4F', 'Slate Gray'],
+  ];
+
+  const handlePreviewClick = () => {
+    router.push('/dashboard');
   };
 
-  // const grabData = async () => {
-  //   try {
-  //     const response = await fetch('/api/generate', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ promptObj: global.generator }),
-  //     });
+  const grabData = async () => {
+    try {
+      const response = await fetch('/api/generate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ promptObj: global.generator }),
+      });
 
-  //     const data = await response.json();
-  //     if (response.status !== 200) {
-  //       throw (
-  //         data.error ||
-  //         new Error(`Request failed with status ${response.status}`)
-  //       );
-  //     }
+      const data = await response.json();
+      if (response.status !== 200) {
+        throw (
+          data.error ||
+          new Error(`Request failed with status ${response.status}`)
+        );
+      }
 
-  //     setGlobalState({
-  //       ...global,
-  //       gptPallete: {
-  //         ...JSON.parse(data.result),
-  //       },
-  //     });
-  //   } catch (error) {
-  //     // Consider implementing your own error handling logic here
-  //     console.error(error);
-  //   }
-  // };
+      // setGlobalState({
+      //   ...global,
+      //   gptPallete: [...JSON.parse(data.result)],
+      // });
+    } catch (error) {
+      // Consider implementing your own error handling logic here
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
     // grabData();
     setGlobalState({
       ...global,
-      gptPallete: {
-        ...testResponse,
-      },
+      gptPallete: [...testResponse],
     });
   }, []);
 
@@ -66,6 +67,7 @@ const ResultsComponent = () => {
       <MenuBar />
       <AnimatedWave />
       <div className={styles.resultsContainer}>
+        {/* <Mission /> */}
         <div className={styles.resultsPaper}>
           <div className={styles.upperList}>
             <ColorList />
@@ -79,16 +81,15 @@ const ResultsComponent = () => {
             >
               Save pallette
             </Button>
-            <Link href="/dashboard" style={{ textDecoration: 'none' }}>
-              <Button
-                variant="contained"
-                color="primary"
-                sx={{ width: 1 / 4, height: 50 }}
-                endIcon={<PreviewIcon sx={{ ml: 2, width: 30, height: 30 }} />}
-              >
-                Preview pallette
-              </Button>
-            </Link>
+            <Button
+              variant="contained"
+              color="primary"
+              sx={{ width: 1 / 4, height: 50 }}
+              endIcon={<PreviewIcon sx={{ ml: 2, width: 30, height: 30 }} />}
+              onClick={handlePreviewClick}
+            >
+              Preview pallette
+            </Button>
             <Button
               variant="contained"
               color="primary"
