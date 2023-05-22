@@ -7,7 +7,7 @@ import { initializeApp } from 'firebase/app';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyCMdfsqusaFDU6uj8hoYrTpgWwn6LpbfIY',
+  apiKey: process.env.FIREBASE_KEY,
   authDomain: 'huehive-d7763.firebaseapp.com',
   projectId: 'huehive-d7763',
   storageBucket: 'huehive-d7763.appspot.com',
