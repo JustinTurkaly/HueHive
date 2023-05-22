@@ -1,5 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import * as React from 'react';
+import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,6 +19,14 @@ const pages = ['Pallete Generator', 'Pallete Builder', 'Go Pro'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function MenuBar() {
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+
+  const signIn = async () => {
+    const result = await signInWithPopup(auth, provider);
+    console.log(result.user);
+  };
+
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
@@ -93,7 +102,7 @@ function MenuBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={signIn}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -122,7 +131,7 @@ function MenuBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={signIn}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}

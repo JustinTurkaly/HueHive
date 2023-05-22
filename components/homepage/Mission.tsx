@@ -27,14 +27,16 @@ const Mission = () => {
               Start the magic!
             </Button>
           </Link>
-          <Button
-            variant="outlined"
-            color="secondary"
-            endIcon={<ColorLensIcon sx={{ ml: 1 }} />}
-            sx={{ width: 1 / 2, height: 60, ml: 15, mt: 3 }}
-          >
-            Build custom pallete
-          </Button>
+          <Link href="/build" style={{ textDecoration: 'none' }}>
+            <Button
+              variant="outlined"
+              color="secondary"
+              endIcon={<ColorLensIcon sx={{ ml: 1 }} />}
+              sx={{ width: 1 / 2, height: 60, ml: 15, mt: 3 }}
+            >
+              Build custom pallete
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Button from '@mui/material/Button';
 import SaveAltIcon from '@mui/icons-material/SaveAlt';
 import PreviewIcon from '@mui/icons-material/Preview';
@@ -11,13 +12,18 @@ import ColorList from './ColorList';
 
 const ResultsComponent = () => {
   const { global, setGlobalState } = useContext(AppContext);
+  const router = useRouter();
 
-  const testResponse = {
-    '#B7D8f1': 'Light Blue',
-    '#3D5A80': 'Midnight Blue',
-    '#2F2F2F': 'Charcoal Gray',
-    '#F7F7F7': 'Crisp White',
-    '#3C7F97': 'Tropical Blue',
+  const testResponse = [
+    ['#F5F5F5', 'Pearl White'],
+    ['#FFD700', 'Golden'],
+    ['#00BFFF', 'Skyfall'],
+    ['#FF4500', 'Orangutan'],
+    ['#2F4F4F', 'Slate Gray'],
+  ];
+
+  const handlePreviewClick = () => {
+    router.push('/dashboard');
   };
 
   const grabData = async () => {
@@ -38,12 +44,10 @@ const ResultsComponent = () => {
         );
       }
 
-      setGlobalState({
-        ...global,
-        gptPallete: {
-          ...JSON.parse(data.result),
-        },
-      });
+      // setGlobalState({
+      //   ...global,
+      //   gptPallete: [...JSON.parse(data.result)],
+      // });
     } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
@@ -54,9 +58,7 @@ const ResultsComponent = () => {
     // grabData();
     setGlobalState({
       ...global,
-      gptPallete: {
-        ...testResponse,
-      },
+      gptPallete: [...testResponse],
     });
   }, []);
 
@@ -65,6 +67,7 @@ const ResultsComponent = () => {
       <MenuBar />
       <AnimatedWave />
       <div className={styles.resultsContainer}>
+        {/* <Mission /> */}
         <div className={styles.resultsPaper}>
           <div className={styles.upperList}>
             <ColorList />
@@ -83,6 +86,7 @@ const ResultsComponent = () => {
               color="primary"
               sx={{ width: 1 / 4, height: 50 }}
               endIcon={<PreviewIcon sx={{ ml: 2, width: 30, height: 30 }} />}
+              onClick={handlePreviewClick}
             >
               Preview pallette
             </Button>

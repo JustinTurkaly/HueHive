@@ -27,7 +27,15 @@ export const AppContextProvider: React.FC<AppContextProviderProps> = ({
       companies: [],
       colors: [],
     },
-    gptPallete: {},
+    gptPallete: [],
+    customPalette: {
+      lShades: [],
+      lAccent: [],
+      mainColor: [],
+      dAccent: [],
+      dShades: [],
+    },
+    customPaletteBool: false,
   });
 
   return (

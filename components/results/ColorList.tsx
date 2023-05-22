@@ -7,7 +7,7 @@ const ColorList = () => {
   const { global } = useContext(AppContext);
 
   const listMapper = () => {
-    const pallete = Object.entries(global.gptPallete);
+    const pallete = global.gptPallete;
     return pallete.map((item, i) => {
       return <ColorCell color={item} index={i} />;
     });
